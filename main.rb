@@ -1,5 +1,6 @@
 require 'training_gym_lesson_batch'
 require 'model/page/jexer_page'
+require 'model/jexer_shops'
 
 driver = TrainingGymLessonBatch.get_driver
 driver.navigate.to JexerPage::BASE_URL
@@ -7,13 +8,9 @@ driver.save_screenshot 'text.png'
 
 page = JexerPage.new(driver)
 
-page.lessons.each do |lesson|
-  puts "新宿店,#{lesson.time},#{lesson.program},#{lesson.instructor}"
-end
-
-page.shop_select(32)
-
-
-page.lessons.each do |lesson|
-  puts "大塚店,#{lesson.time},#{lesson.program},#{lesson.instructor}"
+JexerShops::LIST.each do |shop|
+  page.go_shop_page(shop)
+  page.all_lessons(shop).each do |lesson|
+    puts lesson.to_csv
+  end
 end

@@ -16,7 +16,7 @@ RSpec.describe JexerPage do
 
   describe '#shop_select' do
     before do
-      page_object.shop_select(shop_id)
+      page_object.go_shop_page(shop_id)
     end
     JexerShops::LIST.each do |shop|
       context "#{shop.shop_name}店を表示した場合" do
