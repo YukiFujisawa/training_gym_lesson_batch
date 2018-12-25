@@ -46,9 +46,9 @@ class JexerPage
   # @param [Selenium::WebDriver::Element] lesson_element
   def lessons(shop, week_of_day, lesson_element)
     lesson_element.find_elements(:class, 'wrap').each_with_object([]) do |lesson, result|
-      time = lesson.find_element(:class, 'time').text.gsub(/[\r\n]/, ' ')
-      program = lesson.find_element(:class, 'program').text.gsub(/[\r\n]/, ' ')
-      instructor = lesson.find_element(:class, 'instractor').text.gsub(/[\r\n]/, ' ')
+      time = lesson.find_element(:class, 'time').text
+      program = lesson.find_element(:class, 'program').text
+      instructor = lesson.find_element(:class, 'instractor').text
       result << Lesson.new(shop, week_of_day, time, program, instructor) if time
     end
   end

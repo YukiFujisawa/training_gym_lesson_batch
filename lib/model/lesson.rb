@@ -8,9 +8,9 @@ class Lesson
     @wday_name = day_of_week.day_name
     @shop_id = shop.shop_id
     @shop_name = shop.shop_name
-    @time = NKF.nkf('-m0Z1 -W -w', time)
-    @program = NKF.nkf('-m0Z1 -W -w', program)
-    @instructor = NKF.nkf('-m0Z1 -W -w', instructor)
+    @time = NKF.nkf('-m0Z1 -W -w', time).gsub(/[\s　]/, '')
+    @program = NKF.nkf('-m0Z1 -W -w', program).gsub(/[[\s　]]/, ' ')
+    @instructor = NKF.nkf('-m0Z1 -W -w', instructor).gsub(/[\s　]/, '')
   end
 
   def to_csv
