@@ -4,7 +4,6 @@ require 'model/jexer_shops'
 
 driver = TrainingGymLessonBatch.get_driver
 driver.navigate.to JexerPage::BASE_URL
-driver.save_screenshot 'text.png'
 
 page = JexerPage.new(driver)
 
