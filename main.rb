@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'training_gym_lesson_batch'
 require 'model/page/jexer_page'
 require 'model/jexer_shops'

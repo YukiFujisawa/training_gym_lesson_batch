@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'model/page/jexer_page'
-require 'model/jexer_shops'
+require 'model/jexer/jexer_page'
+require 'model/jexer/jexer_shops'
 
 RSpec.describe JexerPage do
   let!(:driver) { TrainingGymLessonBatch.get_driver }
@@ -15,13 +15,10 @@ RSpec.describe JexerPage do
 
 
   describe '#shop_select' do
-    before do
-      page_object.go_shop_page(shop_id)
-    end
     JexerShops::LIST.each do |shop|
       context "#{shop.shop_name}店を表示した場合" do
-        let(:shop_id) { shop.shop_id }
         it do
+          page_object.go_shop_page(shop)
           expect(driver.title).to match /#{shop.shop_name}【グループエクササイズタイムスケジュール】/
         end
       end
